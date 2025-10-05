@@ -1,0 +1,2 @@
+# InventoryMgmtService
+Inventory Management Service
