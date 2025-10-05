@@ -1,3 +1,4 @@
+// Handles exceptions globally and returns JSON responses
 package com.inventory.management.system.exception;
 
 import org.springframework.http.HttpStatus;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@ControllerAdvice
+@ControllerAdvice // Apply to all controllers
 public class GlobalExceptionHandler {
+
+    // Handle 404 Not Found Exception
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleNotFound(NotFoundException ex) {
         return new ResponseEntity<>(Map.of(
@@ -20,7 +23,7 @@ public class GlobalExceptionHandler {
         ), HttpStatus.NOT_FOUND);
     }
 
-
+    // Handle 400 Bad Request Exception
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Object> handleBadRequest(BadRequestException ex) {
         return new ResponseEntity<>(Map.of(
@@ -31,7 +34,7 @@ public class GlobalExceptionHandler {
         ), HttpStatus.BAD_REQUEST);
     }
 
-
+    // Handle all other exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneral(Exception ex) {
         return new ResponseEntity<>(Map.of(

@@ -7,23 +7,25 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name="inventory")
-@AllArgsConstructor
-@NoArgsConstructor
+// Entity representing a Inventory in the database
+@Entity // JPA entity class
+@Table(name="inventory")  // Creating table of name 'inventory'
+@AllArgsConstructor  // Using All argument constructor annotation for handling parameterized constructors
+@NoArgsConstructor  // Using No argument constructor annotation for handling non - parameterized constructors
 public class Inventory {
-    @Id
-    private Long id;
+    @Id //Primary Key
+    private Long id; // Manual ID provided by client
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Name is required it should not be null or false.
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT") // Description can be long
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Stock quantity cannot be null
     private Integer stockQuantity;
 
+    // Getter and Setter methods for all fields
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
